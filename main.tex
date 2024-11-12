@@ -13,6 +13,13 @@
 \usepackage{mathtools, caption, dsfont, tikz-cd}
 \usepackage{wrapfig}
 
+% tikzpicture
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+
 
 \mathchardef\mhyphen="2D
 
@@ -50,8 +57,11 @@
 \newcommand{\Top}{\mathrm{Top}}
 \newcommand{\Ab}{\mathrm{Ab}}
 \newcommand{\Set}{\mathrm{Set}}
+\newcommand{\ad}{\mathrm{ad}}
 \newcommand{\hht}{\mathrm{ht}}
 
+\newcommand{\PGL}{\mathrm{PGL}}
+\newcommand{\PSL}{\mathrm{PSL}}
 \newcommand{\Psh}{\mathrm{Psh}}
 \newcommand{\Sh}{\mathrm{Sh}}
 \newcommand{\Id}{\mathrm{Id}}
@@ -60,6 +70,11 @@
 \newcommand{\calpha}{\check{\alpha}}
 \newcommand{\cPhi}{\check{\Phi}}
 \newcommand{\cbeta}{\check{\beta}}
+
+% shortcuts
+\newcommand{\slii}{\mathrm{sl}_2}
+\newcommand{\sliii}{\mathrm{sl}_3}
+\newcommand{\eW}{\widetilde{W_a}}
 
 
 % mathcal
@@ -120,9 +135,14 @@
 	\maketitle
 	\pagenumbering{arabic}
 	
-    \section{The Weyl Group}
+    \section{The Weyl Group}\label{chp:weylgroup}
     \input{weyl_group.tex}
 
+    \newpage
+    \section{Chevalley Groups: First Examples}
+    \input{examples.tex}
+
+    \newpage
     \section{Construction of Chevalley Groups}
     \input{construction_chevalley.tex}
 
@@ -132,6 +152,9 @@
     \section{Classical Bruhat Decomposition}
     \input{classical_bruhat.tex}
 
+    
+
+    \newpage
     \section{The Affine Weyl Group}
     \input{affine_weyl.tex}
 
