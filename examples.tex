@@ -1,4 +1,43 @@
-\subsection{The Lie algebra $\mathrm{sl}_2$}
+The study of the structure of Lie algebras and their representation theory is a central tool in the representation theory of groups of Lie type. This is a consequence of the fact that the algebraic structure Lie algebra encapsulates to a large extent the interplay between the algebraic and topological properties of the group. To understand how one side helps understand the other, it is essential to give explicit methods that allows us to construct groups of Lie type from a Lie algebra and vice-versa. The next few chapters describe a way to construct a family of groups of Lie type from a Lie algebra $\fg$, denoted as \textit{adjoint groups of Lie type}. These arise as subgroups of the group $\Aut(\fg)$ of Lie automorphisms of $\fg$ and are constructed using the adjoint representation $\ad:\fg\to\mathrm{gl}(\fg)$.
+
+This initial chapter presents explicitly three relatively simple examples with the aim to highlight and motivate some of the objects that appear in the general theory, which we will explain in later chapters. Before we start, however, we need a few general results on which the construction depend. 
+\begin{definition}
+    Let $\fg$ be a Lie algebra over a field $K$. A $K$-linear map $\delta:\fg\to\fg$ is called a \textit{derivation} if 
+    $$\delta([xy])=[\delta(x)y]+[x\delta(y)]$$
+    for all $x,y\in\fg$.
+\end{definition}
+Importantly, we note that for all $z\in\fg$, the map $\ad(z)$ is a derivation since $$\ad(z)([xy])=[z[xy]]=[[zx]y]+[x[zy]]=[\ad(z)(x),y]+[x,\ad(z)(y)],$$
+where we have used the Jacobi identity. The main ingredient is the following:
+
+\begin{proposition}
+Let $\fg$ be a Lie algebra over a field $K$ of characteristic $0$ and let $\delta:\fg\to\fg$ be a nilpotent derivation with $\delta^n=0$ for $n\geq 0$. Then the map $$\exp(\delta)=I+\delta+\frac{\delta^2}{2}+\frac{\delta^3}{6}+\dots+\frac{\delta^{n-1}}{(n-1)!}:\fg\rightarrow\fg$$
+is an automorphism of $\fg$ as a Lie algebra.
+\end{proposition}
+\begin{proof}
+    The map $\exp(\delta)$ is certainly a $K$-linear map, with inverse given by $\exp(-\delta)$. It remains to show that it preserves the bracket. Since $\delta$ is a derivation, it is easy to check by induction that 
+    $$\frac{\delta^r}{r!}([xy])=\sum_{\substack{i+j=r \\ i,j\geq 0}}\left[\frac{\delta^i}{i!}(x),\frac{\delta^{j}}{j!}(y)\right]$$ 
+    for all $x,y\in\fg$. This immediately implies that
+    $$\exp(\delta)([xy])=\sum_{r=0}^{\infty}\frac{\delta^r}{r!}([xy])=\sum_{r=0}^{\infty}\sum_{\substack{i+j=r \\ i,j\geq 0}}\left[\frac{\delta^i}{i!}(x),\frac{\delta^{j}}{j!}(y)\right]=\left[\sum_{i=0}^\infty\frac{\delta^i}{i!}(x),\sum_{j=0}^{\infty}\frac{\delta^j}{j!}\right]=[\exp(\delta)(x),\exp(\delta)(y)],$$
+    as desired.
+\end{proof}
+\begin{cor}\label{cor:xalpha_automorphism}
+    Let $\fg$ be a lie algebra over a field $K$ of characteristic $0$ and let $\alpha\in\Phi$ be a root of $\fg$. Then, for any $e_\alpha\in\fg_\alpha$ and $t\in K$, the map $x_\alpha(t):=\exp(\ad(te_\alpha))$ is an automorphism of $\fg$ as a Lie algebra.
+\end{cor}
+
+Finally, the following identities will be very helpful later on.
+\begin{lemma}\label{lem:conjxalpla}
+    Let $\fg$ be a Lie algebra over a field $K$ and let $\phi\in\Aut(\fg)$ be an automorphism of $\fg$. Then
+    $$\phi\circ\exp(\ad(te_\alpha))\circ\phi^{-1}=\exp(\ad(t\phi(e_\alpha)))$$
+    for all $e_\alpha\in\fg_\alpha$ and $t\in K$.
+\end{lemma}
+
+\begin{lemma}\label{lem:identityexp}
+    Let $\fg\subseteq\mathrm{gl}_n(K)$ be a linear Lie algebra over a field $K$ and let $x\in\fg$ be nilpotent. Then 
+    $$\exp(\ad(x))(y)=\exp(x)\circ y\circ \exp(x)^{-1}$$
+    for all $y\in\fg$, where the composition is the standard multiplication of matrices in $\mathrm{gl}_n(K)$.
+\end{lemma}
+
+\subsection{Adjoint Chevalley groups of Type $A_1$}
 
 Let $\fg_\CC=\mathrm{sl}_2(\CC)$ be the three-dimensional Lie algebra with basis given by
 $$e=\begin{pmatrix}
@@ -27,9 +66,9 @@ $$e=\begin{pmatrix}
     0 & 2 & 0\\
 \end{pmatrix}.$$
 
-We have that $\mathfrak{t}=\langle h\rangle$ is a Cartan subalgebra, so it acts on $\slii(\CC)$ by a semisimple endomorphism and we have the eigenspace decomposition 
+We have that $\mathfrak{t}=\langle h\rangle$ is a Cartan subalgebra, so it acts on $\slii(\CC)$ by a semisimple endomorphism and we have the root space decomposition into eigenspaces 
 $$\fg_\CC=\slii(\CC)=\langle h\rangle\oplus\langle e\rangle\oplus\langle f\rangle=\mathfrak{t}\oplus\fg_\alpha\oplus\fg_{-\alpha},$$
-where $\alpha:\mathfrak{t}\to\CC$ satisfies $\alpha=h$. The root system of $\slii(\CC)$ is therefore $\Phi=\{\alpha,-\alpha\}$, whose root lattice and weight lattice are $Q=\ZZ\alpha$ and $P=\ZZ\frac{\alpha}{2}$ respectively.
+where $\alpha:\mathfrak{t}\to\CC$ satisfies $\alpha(h)=2$. The root system of $\slii(\CC)$ is therefore $\Phi=\{\alpha,-\alpha\}$, whose root lattice and weight lattice are $Q=\ZZ\alpha$ and $P=\ZZ\frac{\alpha}{2}$ respectively.
 
 The crucial observation is that the basis $\{e,h,f\}$ is a Chevalley basis of $\fg_\CC=\slii(\CC)$, and therefore the $\ZZ$-module $\fg_\ZZ=\ZZ h\oplus\ZZ e\oplus\ZZ f$ is a Lie algebra over $\ZZ$. Hence, by fixing a field $K$, one obtains $\fg_K:=K\otimes_\ZZ\fg_\ZZ$, naturally a Lie algebra over $K$ with Lie bracket
 $$[\mu_1\otimes x_1,\mu_2\otimes x_2]:=\mu_1\mu_2\otimes[x_1,x_2],$$
@@ -50,25 +89,25 @@ $$x_\alpha(t)=\exp(\mathrm{ad}(te))=\begin{pmatrix}
     0 & 0 & \chi(-\alpha)\\
 \end{pmatrix}.$$
 
-Since $\chi(-\alpha)=\chi(\alpha)^{-1}$, $G$ is also a subgroup of $\SL_3(K)$. To study the structure of $G$, we denote the \textit{root subgroups} $X_\alpha=\{x_\alpha(t):t\in K\}$ and $X_{-\alpha}=\{x_{-\alpha}(t):t\in K\}$, both isomorphic to $K$, and the \textit{diagonal subgroup} (or \textit{torus}) $H=\{h(\chi):\chi\in\Hom(\ZZ\alpha,K^*)\}$, isomorphic to $K^*$. 
-From the identity $h(\chi)\circ\exp(\ad(x))\circ h(\chi)^{-1}=\exp(\ad(h(\chi)(x)))$, we obtain that $H$ normalizes $X_\alpha$ and $X_{-\alpha}$. Together with the fact that $H$ is abelian, we have that $\langle X_\alpha,X_{-\alpha}\rangle=G'\triangleleft G$ is the commutator subgroup of $G$. 
+We know from Corollary \ref{cor:xalpha_automorphism} that $x_{\pm\alpha}(t)$ preserves the Lie bracket, and it is clear that $h(\chi)$ preserves it too. Moreover, since $\chi(-\alpha)=\chi(\alpha)^{-1}$, $G$ is also a subgroup of $\SL_3(K)$. To study the structure of $G$, we denote the \textit{root subgroups} $X_\alpha=\{x_\alpha(t):t\in K\}$ and $X_{-\alpha}=\{x_{-\alpha}(t):t\in K\}$, both isomorphic to $K$, and the \textit{diagonal subgroup} (or \textit{torus}) $H=\{h(\chi):\chi\in\Hom(\ZZ\alpha,K^*)\}$, isomorphic to $K^*$. Lemma \ref{lem:conjxalpla} implies that 
+$$h(\chi)\circ x_\alpha(t)\circ h(\chi)^{-1}=x_\alpha(t\chi(\alpha))\quad\text{and}\quad h(\chi)\circ x_{-\alpha}(t)\circ h(\chi)^{-1}=x_{-\alpha}(t\chi(\alpha)^{-1}),$$ so $H$ normalizes $X_\alpha$ and $X_{-\alpha}$. Together with the fact that $H$ is abelian, we have that $\langle X_\alpha,X_{-\alpha}\rangle=G'\triangleleft G$ is the commutator subgroup of $G$. 
 
 We would like a more concrete description of $G$ in terms of more familiar groups. The following proposition is a first step in this direction.
 
-\begin{proposition}
+\begin{proposition}\label{prop:homSL2version1}
     There exists a homomorphism of groups 
-    $\Psi_\alpha:\SL_2(K)\rightarrow\langle X_\alpha,X_{-\alpha}\rangle=G'$
+    $\Psi':\SL_2(K)\rightarrow\langle X_\alpha,X_{-\alpha}\rangle=G'$
     such that 
-    $$\Psi_\alpha\left(\begin{pmatrix}
+    $$\Psi'\left(\begin{pmatrix}
         1 & t\\
         0 & 1\\
-    \end{pmatrix}\right)=x_\alpha(t)\quad\text{and}\quad\Psi_\alpha\left(\begin{pmatrix}
+    \end{pmatrix}\right)=x_\alpha(t)\quad\text{and}\quad\Psi'\left(\begin{pmatrix}
         1 & 0\\
         t & 1\\
     \end{pmatrix}\right)=x_{-\alpha}(t)\quad\text{for all $t\in K$}.$$
 \end{proposition}
 \begin{proof}
-    The map $\Psi_\alpha$ can be realized by an explicit representation of $\SL_2(K)$. Consider the action of $\SL_2(K)$ on the space of polynomials $K[x,y]$ given by 
+    The map $\Psi'$ can be realized by an explicit representation of $\SL_2(K)$. Consider the action of $\SL_2(K)$ on the space of polynomials $K[x,y]$ given by 
     $$\begin{pmatrix}
         a & b\\
         c & d\\
@@ -82,19 +121,19 @@ We would like a more concrete description of $G$ in terms of more familiar group
         -ac & ad+bc & bd\\
         -c^2 & 2cd & d^2\\
     \end{pmatrix},$$
-    and this is precisely the desired homomorphism $\Psi_\alpha$.
+    and this is precisely the desired homomorphism $\Psi'$.
 \end{proof}
 
 Moreover, one can easily check that $\begin{psmallmatrix}
     a&b\\
     c&d\\
-\end{psmallmatrix}\in\ker\Psi_\alpha$ if and only if $b=c=0$ and $a=d=\pm{1}$. This implies
+\end{psmallmatrix}\in\ker\Psi'$ if and only if $b=c=0$ and $a=d=\pm{1}$. This implies
 $$G'=\langle X_\alpha,X_{-\alpha}\rangle\cong\SL_2(K)/\{\pm I\}=\PSL_2(K),$$
-and the bijection is explicitly given by $\Psi_\alpha$. In addition, this gives an explicit description of the torus $H':=H\cap G'$ of $G'$ since $\Psi_\alpha\left(\begin{psmallmatrix}
+and the bijection is explicitly given by $\Psi'$. In addition, this gives an explicit description of the torus $H':=H\cap G'$ of $G'$ since $\Psi'\left(\begin{psmallmatrix}
     a&b\\
     c&d\\
 \end{psmallmatrix}\right)$ is of the form $h(\chi)$ if and only if $b=c=0$ and $a=d^{-1}$, in which case 
-$$h_\alpha(\lambda)=\Psi_\alpha\left(\begin{pmatrix}
+$$h_\alpha(\lambda)=\Psi'\left(\begin{pmatrix}
     \lambda & 0\\
     0 & \lambda^{-1}\\
 \end{pmatrix}\right)=\begin{pmatrix}
@@ -105,12 +144,12 @@ $$h_\alpha(\lambda)=\Psi_\alpha\left(\begin{pmatrix}
 
 This implies that $H'=H\cap G'$ contains the elements $h(\chi)$ such that $\chi\in\Hom(\ZZ\alpha,(K^*)^2)$. Equivalently, $h(\chi)\in H'$ if and only if there is some $\bar\chi\in\Hom(\ZZ\frac{\alpha}{2},K^*)\text{ such that }\bar\chi(\alpha)=\chi(\alpha)$. This is a general phenomenon, as we shall see later.
 
-The next natural question, of course, it whether we have a global description of $G$ similar to $G'$. This is indeed the case, as we now show.
+The next natural question, of course, is whether we have a global description of $G$ similar to $G'$. This is indeed the case, as we now show.
 
-\begin{theorem}
-    There exists a unique homomorphism of groups $\overline{\Psi_\alpha}:\GL_2(K)\to\langle X_\alpha,X_{-\alpha},H\rangle=G$
-    extending $\Psi_\alpha$ such that 
-    $$\overline{\Psi_\alpha}\left(\begin{pmatrix}
+\begin{theorem}\label{thm:globalsl2}
+    There exists a unique homomorphism of groups $\Psi:\GL_2(K)\to\langle X_\alpha,X_{-\alpha},H\rangle=G$
+    extending $\Psi'$ such that 
+    $$\Psi\left(\begin{pmatrix}
         s & 0\\
         0 & 1\\
     \end{pmatrix}\right)=\begin{pmatrix}
@@ -121,7 +160,7 @@ The next natural question, of course, it whether we have a global description of
     for all $s\in K^*$.
 \end{theorem}
 \begin{proof}
-    We claim that the natural extension of $\Psi_\alpha$ given by 
+    We claim that the natural extension of $\Psi'$ given by 
     $$\begin{pmatrix}
         a & b\\
         c & d\\
@@ -130,7 +169,7 @@ The next natural question, of course, it whether we have a global description of
         -ac & ad+bc & bd\\
         -c^2 & 2cd & d^2\\
     \end{pmatrix}$$
-    is the desired map. A simple but tedious calculation shows that this is a group homomorphism that coincides with $\Psi_\alpha$ on $\SL_2(K)$ and maps $\begin{psmallmatrix}
+    is the desired map $\Psi$. A simple but tedious calculation shows that this is a group homomorphism that coincides with $\Psi'$ on $\SL_2(K)$ and maps $\begin{psmallmatrix}
         s & 0\\
         0 & 1\\
     \end{psmallmatrix}$
@@ -144,17 +183,14 @@ The next natural question, of course, it whether we have a global description of
         s & 0\\
         0 & 1\\
     \end{pmatrix}; t\in K, s\in K^*\right\rangle,$$
-    this also implies that $\Ima\overline{\Psi_\alpha}=G$, as desired.
+    it also follows that $\Ima\Psi=G$, as desired.
 \end{proof}
 
 It is an easy check that $\begin{psmallmatrix}
     a & b\\
     c & d\\
-\end{psmallmatrix}\in\ker\overline{\Psi_\alpha}$ if and only if $b=c=0$ and $a=d$. Hence, $$G\cong\GL_2(K)/\{\lambda I,\lambda\in K^*\}=\PGL_2(K),$$
-and we write $\Psi$ for the isomorphism $G\cong \PGL_2(K)$ induced by $\overline{\Psi_\alpha}$.
-
-
-Under $\Psi$, one can identify important subgroups of $G$ with subgroups of $\PGL_2(K)$. Indeed,
+\end{psmallmatrix}\in\ker\Psi$ if and only if $b=c=0$ and $a=d$. Hence, $$G\cong\GL_2(K)/\{\lambda I,\lambda\in K^*\}=\PGL_2(K),$$
+where the isomorphism is explicitly given by $\Psi$. Under this isomorphism, one can identify important subgroups of $G$ with subgroups of $\PGL_2(K)$. Indeed,
 
 $$X_\alpha \longleftrightarrow\begin{pmatrix}
     1 & *\\
@@ -167,8 +203,8 @@ $$X_\alpha \longleftrightarrow\begin{pmatrix}
     0 & *\\
 \end{pmatrix}.$$
 Moreover, one also defines the \textit{monoidal} subgroup $N=\langle H,n_\alpha\rangle$, where $n_\alpha=\Psi_\alpha\begin{psmallmatrix}
-    0 & -1\\
-    1 & 0\\
+    0 & 1\\
+    -1 & 0\\
 \end{psmallmatrix}$ and the \textit{Borel} subgroup $B=UH$. Under $\Psi$, these correspond to
 $$N\longleftrightarrow\begin{pmatrix}
     * & 0\\
@@ -181,13 +217,14 @@ $$N\longleftrightarrow\begin{pmatrix}
     0 & *\\
 \end{pmatrix}.$$
 
-Of course, by intersecting these subgroups with $G'$, we get the same identifications inside $\PSL_2(K)\subseteq\PGL_2(K)$. Therefore,the following results also hold if we intersect the subgroups with $G'$.
+Of course, by intersecting these subgroups with $G'$, we get the same identifications inside $\PSL_2(K)\subseteq\PGL_2(K)$. Therefore, the following results also hold if we intersect the subgroups with $G'$.
 
 Firstly, we note that $N$ is the normalizer of $H$ inside $G$. Therefore $H\triangleleft N$ and $N/H\cong C_2$, generated by $n_\alpha H$. Finally, a simple calculation shows the following.
 
 \begin{theorem}[Bruhat Decomposition for $\slii$]
     Let $G,B,N$ be as above. Then 
-    $$G=BNB=B\sqcup Bn_\alpha B.$$    
+    $$G=BNB=B\sqcup Bn_\alpha B.$$
+    The same is true if we replace $G,B,N$ for $G',B',N'$.
 \end{theorem}
 \begin{proof}
     By using the identification given by $\Psi$, a simple calculation shows that 
@@ -206,3 +243,296 @@ Firstly, we note that $N$ is the normalizer of $H$ inside $G$. Therefore $H\tria
     \end{pmatrix}.$$
     Since $d_1a_2\neq 0$, a simple calculation shows that $Bn_\alpha B=G\setminus B$, as desired.
 \end{proof}
+
+
+
+
+
+\subsection{Adjoint Chevalley groups of Type $A_2$}
+
+In this section, we study the construction of Chevalley groups from the Lie algebra $\fg_\CC=\sliii(\CC)$, an $8$-dimensional Lie algebra with basis given by
+$$\mathcal{B}=\{E_{11}-E_{22},E_{22}-E_{33},E_{12},E_{23},E_{13},E_{21},E_{32},E_{31}\}.$$
+The diagonal matrices $\mathfrak{t}$ inside $\sliii(\CC)$ are a Cartan subalgebra of $\sliii(\CC)$ and are spanned by $h_1:=E_{11}-E_{22}$ and $h_2:=E_{22}-E_{33}$. The root space decomposition is 
+$$\sliii(\CC)=\mathfrak{t}\oplus\langle E_{12}\rangle\oplus\langle E_{23}\rangle\oplus\langle E_{13}\rangle\oplus\langle E_{21}\rangle\oplus\langle E_{32}\rangle\oplus\langle E_{31}\rangle,$$
+and a simple calculation shows that 
+$$\langle E_{12}\rangle=\fg_{\alpha_1},\ \langle E_{23}\rangle=\fg_{\alpha_2},\ \langle E_{31}\rangle=\fg_{\alpha_1+\alpha_2},\ \langle E_{21}\rangle=\fg_{-\alpha_1},\ \langle E_{32}\rangle=\fg_{-\alpha_2},\ \langle E_{31}\rangle=\fg_{-\alpha_1-\alpha_2}$$
+where $\alpha_1(h_{\alpha_1})=\alpha_2(h_{\alpha_2})=2$ and $\alpha_1(h_{\alpha_2})=\alpha_2(h_{\alpha_1})=-1$. Therefore, the root system of $\sliii(\CC)$ is $\Phi=\{\pm\alpha_1,\pm\alpha_2,\pm(\alpha_1+\alpha_2)\}$ of type $A_2$ and has root lattice $Q=\ZZ\alpha_1\oplus\ZZ\alpha_2$ and weight lattice $P=\ZZ\omega_1\oplus\ZZ\omega_2$ where $w_1=(2\alpha_1+\alpha_2)/3$ and $w_2=(\alpha_1+2\alpha_2)/3$.
+
+Again, the basis $\mathcal{B}$ is a Chevalley basis, and for all $\alpha\in\Phi$, we let $e_\alpha=E_{ij}$ when $\langle E_{ij}\rangle=\fg_\alpha$. This implies that the $\ZZ$-module 
+$$\fg_\ZZ=\ZZ h_{\alpha_1}\oplus\ZZ h_{\alpha_2}\oplus\sum_{\alpha\in\Phi}\ZZ e_\alpha$$
+is a Lie algebra over $\ZZ$, and for any fixed field $K$, the vector space $\fg_K:=K\otimes_\ZZ\fg_\ZZ$ is a Lie algebra over $K$ isomorphic to $\sliii(K)$.
+Similarly to the previous example, we define the \textit{adjoin Chevalley group of type $A_2$ over $K$} to be the subgroup of $\Aut(\fg_K)\cap\SL_8(K)$ generated by
+$$\{x_\alpha(t),h(\chi):\alpha\in\Phi,t\in K,\chi\in\Hom(Q,K^*)\},$$ where $x_\alpha(t)=\exp(\ad(te_\alpha))$ and $h(\chi)$ satisfies $h(\chi)(t)=t$ for all $t\in\mathfrak{t}$ and $h(\chi)(e_\alpha)=\chi(\alpha)e_\alpha$ for all $\alpha\in\Phi$. 
+
+We now study the structure of $G$ in an analogous way to the previous section. We define the \textit{root subgroups} $X_\alpha=\{x_\alpha(t):t\in K\}\cong K$ for each $\alpha$ and the \textit{diagonal subgroup} (or \textit{torus}) $H=\{h(\chi):\chi\in\Hom(Q,K^*)\}$. Moreover, we define the unipotent subgroups 
+$$U=\langle X_{\alpha_1},X_{\alpha_2},X_{\alpha_1+\alpha_2}\rangle\quad\text{and}\quad V=\langle X_{-\alpha_1},X_{-\alpha_2},X_{-\alpha_1-\alpha_2}\rangle$$
+and the Borel subgroup $B=UH=HU$.
+
+
+Again, the torus $H$ normalizes each $X_\alpha$, so it normalizes $U$ and $V$. Hence, it follows that $\langle X_\alpha:\alpha\in\Phi\rangle=G'\triangleleft G$ is the commutator subgroup of $G$. The following Proposition, analogous to Proposition \ref{prop:homSL2version1} gives a `local' description of $G$.
+
+\begin{proposition}
+    For each $\alpha\in\Phi$, there exists an isomorphism of groups 
+    $\Psi_\alpha:\SL_2(K)\rightarrow\langle X_\alpha,X_{-\alpha}\rangle\leq G'$
+    such that 
+    $$\Psi_\alpha\left(\begin{pmatrix}
+        1 & t\\
+        0 & 1\\
+    \end{pmatrix}\right)=x_\alpha(t)\quad\text{and}\quad\Psi_\alpha\left(\begin{pmatrix}
+        1 & 0\\
+        t & 1\\
+    \end{pmatrix}\right)=x_{-\alpha}(t)\quad\text{for all $t\in K$}.$$
+\end{proposition}
+
+\iffalse
+\begin{proof}
+    Again, the idea is to construct $\Psi_\alpha$ as a representation of $\SL_2(K)$. To do this, we break $$\fg_K=\langle h_\alpha\rangle^\perp\oplus(\langle h_\alpha\rangle\oplus\fg_\alpha\oplus\fg_{-\alpha})\oplus(\fg_) $$
+\end{proof}
+\fi
+\vspace{0.2cm}
+This result is very useful in practice, but we are interested in a `global' description of the group. To obtain such a description, we use Lemma \ref{lem:identityexp} to obtain the identity
+$$x_\alpha(t)=\exp(te_\alpha)\circ y\circ\exp(te_\alpha)^{-1}$$
+for all $y\in\sliii(K)$.
+We note that for all $t\in K$,
+
+\begin{equation}\label{eq:exp}
+\exp(te_{\alpha_1})=\begin{pmatrix}
+    1 & t & 0\\
+    0 & 1 & 0\\
+    0 & 0 & 1\\
+\end{pmatrix},\quad\exp(te_{\alpha_2})=\begin{pmatrix}
+    1 & 0 & 0\\
+    0 & 1 & t\\
+    0 & 0 & 1\\
+\end{pmatrix},\quad\exp(te_{\alpha_1})=\begin{pmatrix}
+    1 & 0 & t\\
+    0 & 1 & 0\\
+    0 & 0 & 1\\
+\end{pmatrix},\quad\exp(te_{-\alpha})=\exp(te_\alpha)^T,
+\end{equation}
+and these matrices generate $SL_3(K)$. This gives a global description of $G'$.
+
+\begin{theorem}
+    There exists a surjective group homomorphism $\Psi':\SL_3(K)\to G'$ such that 
+    $$\Psi'(A)(y)=AyA^{-1}$$
+    for all $A\in\SL_3(K)$ and $y\in\sliii(K)$. Moreover, $\ker\Psi'$ is the scalar multiples of the identity in $\SL_3(K)$.
+\end{theorem}
+\begin{proof}
+    From \eqref{eq:exp}, we know that $\Psi'(I+te_\alpha)=x_\alpha(t)$ for all $\alpha\in\Phi$ and $t\in K$. Since these matrices generate $\SL_3(K)$ and the maps $x_\alpha(t)$ generate $G'$, the map is a well-defined surjective group homomorphism. Finally, it is clear that $\ker\Psi'=\{A\in\SL_3(K):Ay=yA\text{ for all }y\in\sliii(K)\}=Z(\SL_3(K))$, which are the scalar multiples of the identity.
+\end{proof}
+
+Consequently, we get that $G'\cong\PSL_3(K)$, and under this isomorphism, we can identify subgroups of $G'$ with subgroups of $\PSL_3(K)$. Indeed,
+\begin{equation*}
+    X_{\alpha_1}\longleftrightarrow\begin{pmatrix}
+        1 & * & 0\\
+        0 & 1 & 0\\
+        0 & 0 & 1\\
+    \end{pmatrix},\quad X_{\alpha_2}\longleftrightarrow\begin{pmatrix}
+        1 & 0 & 0\\
+        0 & 1 & *\\
+        0 & 0 & 1\\
+    \end{pmatrix},\quad X_{\alpha_1+\alpha_2}\longleftrightarrow\begin{pmatrix}
+        1 & 0 & *\\
+        0 & 1 & 0\\
+        0 & 0 & 1\\
+    \end{pmatrix},\quad U\longleftrightarrow\begin{pmatrix}
+        1 & * & *\\
+        0 & 1 & *\\
+        0 & 0 & 1\\
+    \end{pmatrix}
+\end{equation*}
+and analogously for negative roots. Moreover, for any $A\in\SL_3(K)$, $\Psi'(A)$ preserves all root spaces if and only if $A$ is diagonal. Hence,
+
+\begin{equation*}
+    H'=H\cap G' \longleftrightarrow\begin{pmatrix}
+        * & 0 & 0\\
+        0 & * & 0\\
+        0 & 0 & *\\
+    \end{pmatrix},\quad B'=UH'\longleftrightarrow\begin{pmatrix}
+        * & * & *\\
+        0 & * & *\\
+        0 & 0 & *\\
+    \end{pmatrix}
+\end{equation*}
+
+These observations motivate two questions. Firstly, we would like to understand the torus $H'$ of $G'$ and, more importantly, we want a global description of $G$ extending our description of $G'$ similar to Theorem \ref{thm:globalsl2}. The first question can be answered by noting that, with respect to the Chevalley basis $\mathcal{B}$,
+$$\Psi'(\mathrm{Diag}(\lambda,\lambda^{-1}\mu,\mu^{-1}))=\mathrm{Diag}(1,1,\lambda^2\mu^{-1},\lambda^{-1}\mu^2,\lambda\mu,\lambda^{-2}\mu,\lambda\mu^{-2},\lambda^{-1}\mu^{-1})=h(\chi),$$
+where $\chi(\alpha_1)=\lambda^2\mu^{-1}$ and $\chi(\alpha_2)=\lambda^{-1}\mu^2$. Importantly, such a character can be extended to a character $\bar{\chi}$ of the weight lattice by setting $\bar\chi(\omega_1)=\lambda$ and $\bar\chi(\omega_2)=\mu$. By the construction above, this is also a sufficient condition, so have proved the following.
+
+\begin{lemma}
+    Let $\chi\in\Hom(Q,K^*)$ be a character of the root lattice. Then $h(\chi)\in H'=H\cap G'$ if and only if $\chi$ can be extended to a character of the weight lattice $P$.
+\end{lemma}
+
+Similarly, it is also possible to give an explicit global description of $G$ by extending $\Psi'$. 
+
+\begin{theorem}
+    There exists a unique surjective group homomorphism $\Psi:\GL_3(K)\to G$ extending $\Psi'$ such that 
+    $$\Psi\left(\begin{pmatrix}
+        s & 0 & 0\\
+        0 & 1 & 0\\
+        0 & 0 & 1\\
+    \end{pmatrix}\right)=h(\chi_s),\quad\text{where }\chi_s(\alpha_1)=s\text{ and }\chi_s(\alpha_2)=1.$$
+    In particular $h(\chi_s)\in H$ if and only if $s$ is a cube in $K^*$.
+\end{theorem}
+
+\begin{proof}
+    To simplify notation, let $D_s\in\GL_3(K)$ be the diagonal matrix with $s$ at the $(1,1)$-entry and $1$ in the other two entries. Any matrix $A\in\GL_3(K)$ with $d=\det(A)$ can be expressed uniquely as $A=D_dA'$ where $A'\in\SL_3(K)$, so we might define 
+    $$\Psi(A)=h(\chi)\Psi'(A').$$
+    Of course, we now need to show that $\Psi$ is a group homomorphism. By Lemma \ref{lem:conjxalpla}, we know that 
+    $$h(\chi_s)x_{\alpha_1}(t)=x_{\alpha_1}(st)h(\chi_s)\quad\text{and}\quad h(\chi_s)x_{\alpha_2}(t)=x_{\alpha_2}(t)h(\chi_s),$$
+    which agrees with the identities
+    $$\begin{pmatrix}
+        s & 0 & 0\\
+        0 & 1 & 0\\
+        0 & 0 & 1\\
+    \end{pmatrix}\begin{pmatrix}
+        1 & t & 0\\
+        0 & 1 & 0\\
+        0 & 0 & 1\\
+    \end{pmatrix}=\begin{pmatrix}
+        1 & st & 0\\
+        0 & 1 & 0\\
+        0 & 0 & 1\\
+    \end{pmatrix}\begin{pmatrix}
+        s & 0 & 0\\
+        0 & 1 & 0\\
+        0 & 0 & 1\\
+    \end{pmatrix}\text{ and }\begin{pmatrix}
+        s & 0 & 0\\
+        0 & 1 & 0\\
+        0 & 0 & 1\\
+    \end{pmatrix}\begin{pmatrix}
+        1 & 0 & 0\\
+        0 & 1 & t\\
+        0 & 0 & 1\\
+    \end{pmatrix}=\begin{pmatrix}
+        1 & 0 & 0\\
+        0 & 1 & t\\
+        0 & 0 & 1\\
+    \end{pmatrix}\begin{pmatrix}
+        s & 0 & 0\\
+        0 & 1 & 0\\
+        0 & 0 & 1\\
+    \end{pmatrix}.$$
+    The same compatibility is true for any $\alpha\in\Phi$, $t\in K$ and $s\in K^*$. Since $\SL_3(K)$ is generated by $\{x_\alpha(t):\alpha\in\Phi, t\in K\}$, we have that for any $s,u\in K^*$ and $A,B\in\SL_3(K)$,
+    \begin{align*}
+        \Psi(D_sAD_uB)=\Psi(D_sD_uD_u^{-1}AD_uB)=h(\chi_{s})h(\chi_u)\Psi'(D_u^{-1}AD_u)\Psi'(B)=\\
+        h(\chi_s)\Psi'(D_u(D_u^{-1}AD_u)D_u^{-1})h(\chi_u)\Psi'(B)=h(\chi_s)\Psi'(A)h(\chi_u)\Psi'(B)=\Psi(D_sA)\Psi(D_uB).
+    \end{align*}
+    This concludes the proof.
+\end{proof}
+
+Since $G$ is generated by $G'$ and $H$, it is still the case that for $A\in\GL_3$, $\Psi(A)$ is diagonal if and only if $A$ is diagonal. In particular, by tracing through the construction of $\Psi$, one can easily show that 
+$$\Psi(\mathrm{Diag}(s,u,v))=h(\chi),\quad\text{where }\chi(\alpha_1)=su^{-1}\text{ and }\chi(\alpha_2)=uv^{-1}.$$
+Therefore, $\ker\Psi=\{\lambda I:\lambda\in K^*\}$ are the scalar multiples of the identity, so $G\cong\PGL_3(K)$. Moreover, the identification given by $\Psi$ of the subgroups of $G$ with subgroups of $\PGL_2(K)$ is analogous to the identification given by $\Psi'$.
+
+We are finally ready to give the Bruhat decomposition of $G$ (and $G'$). For each $\alpha\in\Phi$, let $n_\alpha=\Psi_\alpha\left(\begin{psmallmatrix}
+    0 & 1\\
+    -1 & 0\\
+\end{psmallmatrix}\right)$, and define the monoidal subgroups
+$$N=\langle H,n_\alpha:\alpha\in\Phi\rangle,\quad N'=N\cap G'=\langle H',n_\alpha:\alpha\in\Phi\rangle.$$
+Under the isomorphism given by $\Psi$, we have that 
+\begin{equation*}
+    n_{\alpha_1}\longleftrightarrow\begin{pmatrix}
+        0 & 1 & 0\\
+        -1 & 0 & 0\\
+        0 & 0 & 1\\
+    \end{pmatrix},\quad n_{\alpha_2}\longleftrightarrow\begin{pmatrix}
+        1 & 0 & 0\\
+        0 & 0 & 1\\
+        0 & -1 & 0\\
+    \end{pmatrix},\quad n_{\alpha_1+\alpha_2}\longleftrightarrow\begin{pmatrix}
+        0 & 0 & 1\\
+        0 & 1 & 0\\
+        -1 & 0 & 0\\
+    \end{pmatrix}
+\end{equation*}
+and therefore 
+\begin{equation*}
+    N\longleftrightarrow\begin{pmatrix}
+        * & 0 & 0\\
+        0 & * & 0\\
+        0 & 0 & *\\
+    \end{pmatrix}\sqcup\begin{pmatrix}
+        0 & * & 0\\
+        * & 0 & 0\\
+        0 & 0 & *\\
+    \end{pmatrix}\sqcup\begin{pmatrix}
+        * & 0 & 0\\
+        0 & 0 & *\\
+        0 & * & 0\\
+    \end{pmatrix}\sqcup\begin{pmatrix}
+        0 & 0 & *\\
+        * & 0 & 0\\
+        0 & * & 0\\
+    \end{pmatrix}\sqcup\begin{pmatrix}
+        0 & * & 0\\
+        0 & 0 & *\\
+        * & 0 & 0\\
+    \end{pmatrix}\sqcup\begin{pmatrix}
+        0 & 0 & *\\
+        0 & * & 0\\
+        * & 0 & 0\\
+    \end{pmatrix}
+\end{equation*}
+From this perspective, it is clear that that $N$ is in fact the normalizer of $H=B\cap N$ inside $G$, and that the quotient $N/H$ is isomorphic to $S_3$, generated by the elements $n_{\alpha_1}H$ and $n_{\alpha_2}H$. Now the proof of the Bruhat decomposition for $G$ is a tedious analogous to Theorem \ref{thm:bruhatsl2}.
+
+\begin{theorem}[Bruhat decomposition for $\sliii$] 
+    Let $G,B,N$ as above. Then 
+    $$G=BNB=B\sqcup Bn_{\alpha_1}B\sqcup Bn_{\alpha_2}B\sqcup Bn_{\alpha_1}n_{\alpha_2}B\sqcup Bn_{\alpha_2}n_{\alpha_1}B\sqcup Bn_{\alpha_1}n_{\alpha_2}n_{\alpha_1}B.$$  
+    The same is true if we replace $G,B,N$ for $G',B',N'$.
+\end{theorem}
+
+
+
+
+
+
+
+\subsection{Adjoint Chevalley groups of Type $A_n$}
+
+Having explicitly described the structure for adjoint Chevalley groups of Type $A_2$, we are ready to describe the general structure of Chevalley groups of type $A_n$.
+
+Consider the complex Lie algebra $\fg_\CC=\mathrm{sl}_{n+1}(\CC)$ with Cartan subalgebra $\mathfrak{t}$ given by diagonal matrices and spanned by $h_i:=E_{i,i}-E_{i+1,i+1}$ for $1\leq i\leq n$. The root space decomposition 
+$$\fg_\CC=\mathrm{sl}_n(\CC)=\mathfrak{t}\oplus\sum_{\alpha\in\Phi}\fg_{\alpha},$$
+where $\Phi$ is a root system of type $A_n$. We may choose simple roots $\alpha_1,\ldots,\alpha_n$ such that $\fg_{\alpha_i}=\langle E_{i,i+1}\rangle$ for $1\leq i\leq n$ and the other positive roots of $\Phi$ are given by $\alpha=\alpha_i+\alpha_{i+1}+\cdots+\alpha_{j-1}$ for $1\leq i< j\leq n$ and they satisfy $\fg_\alpha=\langle E_{i,j}\rangle$ and $\fg_{-\alpha}=\langle E_{j,i}\rangle$. To simply notation, given $i<j$ and $\alpha$ as above, we let $e_\alpha=E_{i,j}$ and $e_{-\alpha}=E_{j,i}$.
+We remark that 
+$$\alpha_i(h_{\alpha_j})=\begin{cases}
+    2 & \text{ if } i=j, \\
+    -1 & \text{ if } |i-j|=1,\\
+    0 & \text{ otherwise,} 
+\end{cases}$$
+
+and therefore the fundamental weights are given by 
+\begin{equation}
+    \begin{pmatrix}
+        \omega_1\\
+        \vdots\\
+        \vdots\\
+        \vdots\\
+        \omega_n
+    \end{pmatrix}=\begin{pmatrix}
+        2 & -1 & & & \\
+        -1 & 2 & -1 & &\\
+         & -1 & 2 & \ddots & \\
+         & & \ddots & \ddots & -1\\
+         & & & -1 & 2\\ 
+    \end{pmatrix}^{-1}
+    \begin{pmatrix}
+        \alpha_1\\
+        \vdots\\
+        \vdots\\
+        \vdots\\
+        \alpha_n\\
+    \end{pmatrix}.
+\end{equation}
+
+Since the change of basis matrix above has determinant $n+1$, it follows that the root lattice $Q=\sum_{i=1}^n\ZZ\alpha_i$ has index $n+1$ inside the weight lattice $P=\sum_{i=1}^n\omega_i$.
+
+In this general setting, the basis 
+$$\mathcal{B}=\{h_1,\ldots,h_n,e_\alpha:\alpha\in\Phi\}$$
+is a Chevalley basis, so the $\ZZ$-module
+$$\fg_\ZZ=\sum_{i=1}^{l}\ZZ h_i\oplus\sum_{\alpha\in\Phi}\ZZ e_\alpha$$
+is a Lie algebra over $\ZZ$. If we fix any field $K$, the $K$-vector space $\fg_K=K\otimes_\ZZ\fg_\ZZ$ is a Lie algebra over $K$. For each $t\in K$, the map  
+
+
