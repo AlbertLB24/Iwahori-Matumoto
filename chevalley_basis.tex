@@ -1,0 +1,166 @@
+The study of the structure of Lie algebras and their representation theory is a central tool in the representation theory of groups of Lie type. This is a consequence of the fact that the algebraic structure of the Lie algebra encapsulates to a large extent the interplay between the algebraic and topological properties of the group. To understand how one side helps understand the other, it is essential to give explicit methods that allows us to construct groups of Lie type from a Lie algebra and vice-versa. The construction of complex (or real) Lie groups from a complex (or real) Lie algebra has been known for a long time, and it has sparked remarkable progress in the understanding of the representations of complex (or real) Lie groups. 
+
+In the 1950s, Chevalley became interested in the connection between complex Lie algebras and finite groups, an unexplored link at the time. In a fundamental paper, Chevalley constructed, for each complex simple Lie algebra $\fg$, a corresponding linear group over any field $K$. In this chapter, we investigate the main ingredient of his construction; the existence of a Chevalley basis. By using the adjoint representation $\ad:\fg\to\mathrm{gl}(\fg)$ together with the exponential map, we will be able to construct adjoint groups of Lie type over an arbitrary field $K$. 
+
+Let's begin by considering a complex simple Lie algebra $\fg_\CC$ with Cartan subalgebra $\mathfrak{t}$ and root space decomposition 
+$$\fg_\CC=\mathfrak{t}\oplus\sum_{\alpha\in\Phi}\fg_\alpha.$$
+We recall that for each $\alpha\in\Phi$, the subalgebra
+$$m_\alpha:=\fg_\alpha\oplus[\fg_\alpha,\fg_{-\alpha}]\oplus\fg_{-\alpha}$$
+is isomorphic to $\slii(\CC)$. In particular, each $\fg_\alpha$ is one-dimensional, and we can pick elements $e_\alpha\in\fg_\alpha$, $e_{-\alpha}\in\fg_{-\alpha}$ and $h_\alpha\in[\fg_\alpha,\fg_{-\alpha}]$ such that 
+$$[h_\alpha,e_\alpha]=2e_\alpha,\quad[h_\alpha,e_{-\alpha}]=-2e_{-\alpha},\quad[e_\alpha,e_{-\alpha}]=h_\alpha.$$
+We remark that $h_\alpha$ is uniquely determined, while $e_\alpha$ and $e_{-\alpha}$ are determined up to a constant. Next, fix an integral basis $\Delta=\{\alpha_1,\ldots,\alpha_l\}$ of $\Phi$.
+
+\begin{lemma}
+    With the notation as above, the elements $h_{\alpha_1},\ldots,h_{\alpha_l}$ are a basis of $\mathfrak{t}$ and for any $\alpha\in\Phi^+$ (resp $\Phi^-$), $h_\alpha$ is a linear combination of $h_{\alpha_1},\ldots,h_{\alpha_l}$ with non-negative (resp. non-positive) integer coefficients.
+\end{lemma}
+
+\begin{proof}
+    The Killing form gives $\mathfrak{t}$ the structure of an euclidean space and induces isometries $\phi:\mathfrak{t}\to\mathfrak{t}^*$ and $\phi^*:\mathfrak{t}^*\to\mathfrak{t}^{**}$. Note that for any $\alpha\in\Phi$, $\phi(t_\alpha)=\alpha$ where $K(t_\alpha,x)=\alpha(x)$ for all $x\in\mathfrak{t}$. Since $h_\alpha=2t_\alpha/\alpha(t_\alpha)$, then $\phi(h_\alpha)=2\alpha/(\alpha,\alpha)$, where $(\cdot,\cdot)$ is the inner product on $\mathfrak{t}^*$ induced by the Killing form. This implies that $\phi^*\phi(h_\alpha)=\calpha$. Hence, the statement of the lemma is equivalent to the fact that $\cPhi=\{\cbeta:\beta\in\Phi\}$ is a root system in $\mathfrak{t}^{**}$ with integral basis $\check{\Delta}=\{\check{\alpha_i}:1\leq i\leq l\}$, which is true. Hence, the result follows.
+\end{proof}
+
+To simplify notation, we write $h_i$ instead of $h_{\alpha_i}$ for each $1\leq i\leq l$. The lemma implies that the set $\mathcal{B}=\{h_1,\ldots,h_l;e_\alpha:\alpha\in\Phi\}$ is a basis for $\fg_\CC$. In addition, since $[\fg_\alpha,\fg_\beta]=\fg_{\alpha+\beta}$ for all $\alpha,\beta\in\Phi$, we have that 
+$$[h_i,h_j]=0,\quad[h_i,e_\alpha]=\alpha(h_i)e_\alpha=\langle\alpha,\check{\alpha_i}\rangle e_\alpha,\quad[e_\alpha,e_\beta]=\begin{cases}
+    N_{\alpha,\beta}e_{\alpha+\beta} & \text{ if } \alpha+\beta\in\Phi,\\
+    0 & \text{ if }\alpha+\beta\notin\Phi.\\
+\end{cases}$$
+The constants $N_{\alpha,\beta}$ are called the \textit{structure constants} associated to $\mathcal{B}$.
+
+\begin{definition}
+    A basis $\mathcal{B}=\{h_1,\ldots,h_l;e_\alpha:\alpha\in\Phi\}$ as above is said to be a \textit{Chevalley basis} if the structure constants $N_{\alpha,\beta}$ are integers for all $\alpha,\beta\in\Phi$ with $\alpha+\beta\in\Phi$.
+\end{definition}
+
+The main theorem of this chapter the following.
+
+\begin{theorem}[Chevalley, 1955]
+    Let $\fg_\CC$ be a complex simple Lie algebra. Then $\fg_\CC$ has a Chevalley basis.
+\end{theorem}
+
+\subsection{Chevalley Basis on \texorpdfstring{$\mathrm{sl}_{n+1}(\CC)$}{PDFstring}}\label{sec:chevbasis_sl}
+
+Let's begin with a motivating example in which Chevalley basis arise naturally. The Lie algebra $\fg_\CC=\mathrm{sl}_{n+1}(\CC)$ has a Cartan subalgebra $\mathfrak{t}$ consisting of the diagonal matrices, which is spanned by $E_{ii}-E_{i+1,i+1}$ for $1\leq i\leq n$. To simplify notation, we let $h_i=E_{ii}-E_{i+1,i+1}$ (note that this coincides with the notation above - and it is not a coincidence!).
+
+The root space decomposition of $\mathrm{sl}_{n+1}(\CC)$ with this choice of Cartan subalgebra is 
+$$\mathrm{sl}_{n+1}(\CC)=\mathfrak{t}\oplus\sum_{1\leq i\neq j\leq n+1}\langle E_{ij}\rangle,$$
+and has associated root system $\Phi$ of type $A_n$. For each $1\leq i\leq n$, let $\alpha_i\in\Phi$ be the root associated such that $\fg_{\alpha_i}=E_{i,i+1}$. An easy computation shows that 
+$$\alpha_i(h_j)=\begin{cases}
+    2 & \text{ if } i=j,\\
+    -1 & \text{ if } |i-j|=1,\\
+    0 & \text{ otherwise.}
+\end{cases}$$
+
+\begin{lemma}
+    The roots $\alpha_1,\ldots,\alpha_n$ are an integral basis of the root system $\Phi$.
+\end{lemma}
+\begin{proof}
+    Firstly, we note that if $1\leq i<j\leq n+1$ and $1\leq k<l\leq n+1$, then $[E_{ij},E_{kl}]=\delta_{jk}E_{il}$ and $[E_{ij}-E_{ji}]\in\mathfrak{t}$. Therefore, if $\alpha\in\Phi$ is the root such that $\fg_\alpha=\langle E_{ij}\rangle$ for some $i<j$, then $\fg_{-\alpha}=\langle E_{ji}\rangle$ and $\alpha=\alpha_i+\alpha_{i+1}+\cdots+\alpha_{j-1}$, which is what we wanted to show.
+\end{proof}
+
+\begin{proposition}
+    The basis $\{h_1,\ldots,h_n;E_{ij}:1\leq i\neq j\leq n+1\}$ is a Chevalley basis of $\mathrm{sl}_{n+1}(\CC)$.
+\end{proposition}
+\begin{proof}
+    Since $\alpha_1,\ldots,\alpha_n$ is an integral basis, the matrices $h_i=E_{ii}-E_{i+1,i+1}$ are the desired basis of $\mathfrak{t}$. Since $[E_{ij},E_{kl}]=\delta_{jk}E_{il}-\delta_{il}E_{kj}$, it is clear that all structure constants are $\pm1$, as desired.
+\end{proof}
+
+\subsection{Existence of Chevalley Basis}
+
+\subsection{The Exponential Map}
+Having established the existence of Chevalley basis, we can now define the exponential maps arising form the adjoint representation of the Lie algebra and study its effect on the basis. 
+
+For the remainder of this chapter, fix some complex simple Lie algebra $\fg_\CC$ with Cartan subalgebra $\mathfrak{t}$, root system $\Phi$ and Chevalley basis $\mathcal{B}$. Consider the adjoint representation $\ad:\fg\to\mathrm{gl}(\fg)$ and, for every $\alpha\in\Phi$ and $\zeta\in\CC$, we define the endomorphism of $\fg_\CC$ given by
+$$\exp(\ad(\zeta e_\alpha)):=I+\ad(\zeta e_\alpha)+\frac{\ad(\zeta e_\alpha)^2}{2}+\frac{\ad(\zeta e_\alpha)^3}{6}+\cdots+\frac{\ad(\zeta e_\alpha)^k}{k!}+\cdots.$$
+This is a well-defined map since $\ad(\zeta e_\alpha)$ is a nilpotent transformation for all $\alpha\in\Phi$ and $\zeta\in\CC$. For $\exp(\ad(\zeta e_\alpha))$ to be of interest, we need to show that it is in fact a Lie algebra automorphism of $\fg_\CC$. To do this, we first note that for any $x\in\fg_\CC$, the Jacobi identity implies that
+$$\ad(x)([yz])=[\ad(x)(y),z]+[y,\ad(x)(z)]$$
+for any $y,z\in\fg_\CC$. A map $\delta:\fg_\CC\to\fg_\CC$ satisfying the condition above is called a \textit{derivation} of the Lie algebra. Importantly, derivations satisfy the following property.
+
+\begin{proposition}
+    Let $\delta:\fg_\CC\to\fg_\CC$ be a nilpotent derivation with $\delta^n=0$ for $n\geq 0$. Then the map $$\exp(\delta)=I+\delta+\frac{\delta^2}{2}+\frac{\delta^3}{3!}+\dots+\frac{\delta^{n-1}}{(n-1)!}$$
+    is an automorphism of $\fg$ as a Lie algebra.
+\end{proposition}
+\begin{proof}
+    The map $\exp(\delta)$ is certainly a $\CC$-linear map, with inverse given by $\exp(-\delta)$. It remains to show that it preserves the bracket. Since $\delta$ is a derivation, it is easy to check by induction that 
+    $$\frac{\delta^r}{r!}([xy])=\sum_{\substack{i+j=r \\ i,j\geq 0}}\left[\frac{\delta^i}{i!}(x),\frac{\delta^{j}}{j!}(y)\right]$$ 
+    for all $r\geq 1$ and $x,y\in\fg$. This immediately implies that
+    $$\exp(\delta)([xy])=\sum_{r=0}^{\infty}\frac{\delta^r}{r!}([xy])=\sum_{r=0}^{\infty}\sum_{\substack{i+j=r \\ i,j\geq 0}}\left[\frac{\delta^i}{i!}(x),\frac{\delta^{j}}{j!}(y)\right]=\left[\sum_{i=0}^\infty\frac{\delta^i}{i!}(x),\sum_{j=0}^{\infty}\frac{\delta^j}{j!}\right]=[\exp(\delta)(x),\exp(\delta)(y)],$$
+    as desired.
+\end{proof}
+
+\begin{cor}\label{cor:xalpha_automorphism}
+    For any root $\alpha\in\Phi$ and $\zeta\in \CC$, the map $\exp(\ad(\zeta e_\alpha))$ is an automorphism of $\fg_\CC$ as a Lie algebra.
+\end{cor}
+
+To simplify notation, we simply write $x_\alpha(\zeta)$ for $\exp(\ad(\zeta e_\alpha))$. 
+\iffalse In addition, for any $\chi\in\Hom(\ZZ\Phi,\CC^*)$, we define the automorphism of $\fg_\CC$ given by
+\begin{align*}
+    h(\chi):\fg_\CC & \longrightarrow\fg_\CC  \\
+    h_i & \longmapsto h_i\quad\quad\quad\text{ for all }1\leq i\leq n,\\
+    e_\alpha &\longmapsto \chi(\alpha)e_\alpha\quad \text{ for all }\alpha\in\Phi.
+\end{align*}
+The fact that $\chi$ is a multiplicative character implies that $h(\chi)$ is a Lie algebra automorphism of $\fg_\CC$. \fi
+
+\begin{definition}
+    The adjoint Chevalley group over $\CC$ associated to $\fg_\CC$ is the subgroup $G$ of $\Aut(\fg_\CC)$ generated by the automorphisms $x_\alpha(\zeta)$ for all $\alpha\in\Phi$ and $\zeta\in\CC$.
+    \iffalse
+    $$\text{  and  }\{h(\chi):\chi\in\Hom(\ZZ\Phi,\CC^*)\}.$$
+    \fi
+\end{definition}
+
+The group $G$ naturally inherits a complex Lie group structure as a subgroup of $\Aut(\fg)$, so this construction provides one direction of the bridge between complex Lie algebras and complex Lie groups. However, at the beginning of this chapter we promised a construction of a group of Lie type for an arbitrary field $K$. The first step, of course, is to consider a Chevalley basis $\mathcal{B}=\{h_1,\ldots,h_l;e_\alpha:\alpha\in\Phi\}$ for $\fg_\CC$ and to consider the $\ZZ$-module 
+$$\fg_\ZZ=\sum_{i=1}^l\ZZ h_i\oplus\sum_{\alpha\in\Phi}\ZZ e_\alpha,$$
+which is closed under the bracket. Then we can construct the $K$-vector space $\fg_K=K\otimes_\ZZ\fg_\ZZ$, a Lie algebra over $K$ with basis $\overline{h_i}:=1\otimes h_i$ for $1\leq i\leq n$ and $\overline{e_\alpha}=1\otimes e_\alpha$ for $\alpha\in\Phi$. We denote this basis as $\overline{\mathcal{B}}_K$. Ideally, we would like to construct the Chevalley group over $K$ as a subgroup of $\Aut(\fg_K)$ generated by exponential maps (and possibly other automorphisms). This is indeed possible if $K$ has characteristic $0$; however, if the characteristic is positive, the exponential maps are not well-defined automorphisms of $\fg$. To circumvent this problem, we first need to analyse how the exponential maps $x_\alpha(\zeta)$ act on the Chevalley basis $\mathcal{B}$. This is simply a matter of tracing through the definitions. Indeed, 
+\begin{align*}
+    x_\alpha(\zeta)(e_\alpha)=e_\alpha, \quad\quad x_\alpha(e_{-\alpha})=e_{-\alpha}+\zeta h_\alpha-\zeta^2 e_\alpha\quad\quad\text{and}\quad\quad x_\alpha(\zeta)(h_i)=h_i-\langle\alpha,\check{\alpha_i}\rangle e_\alpha
+\end{align*}
+for all $1\leq i\leq l$. It remains to show the effect of $x_\alpha(\zeta)$ on basis elements $e_\beta$ for $\beta\neq\pm\alpha$. To do this, suppose that $\beta-p\alpha,\ldots,\beta,\ldots,\beta+q\alpha$ is the $\alpha$-string through $\beta$, where $p\geq 0$ and $q\geq 1$ (if $q=0$, then $\alpha+\beta\notin\Phi$, so $x_\alpha(\zeta)(e_\beta)=e_\beta$). Then
+$$x_\alpha(\zeta)(e_\beta)=e_\beta+N_{\alpha,\beta}\zeta e_{\beta+\alpha}+\frac{N_{\alpha,\beta}N_{\alpha,\alpha+\beta}}{2}\zeta^2 e_{\beta+2\alpha}+\cdots+\frac{N_{\alpha,\beta}\cdots N_{\alpha,\beta+(q-1)\alpha}}{q!}\zeta^q e_{\beta+q\alpha}.$$
+From Theorem \ref{thm:chevalleybasis}, we know that $N_{\alpha,\beta}=\pm(p+1)$ and therefore
+$$\frac{N_{\alpha,\beta}\cdots N_{\alpha,\beta+(i-1)\alpha}}{i!}=\pm\frac{(p+1)(p+2)\cdots(p+i)}{i!}=\pm \binom{p+i}{i}.$$
+Hence, we have shown the following.
+\begin{proposition}
+    Let $\fg_\CC$ be a complex simple Lie algebra with Chevalley basis $\mathcal{B}=\{h_1,\ldots,h_l;e_\alpha:\alpha\in\Phi\}$. Then the matrix $A_\alpha(\zeta)$ of the automorphism $x_\alpha(\zeta)$ with respect to the basis $\mathcal{B}$ has entries in $\ZZ[\zeta]$. In fact, all entries are of the form $a\zeta^i$ for some $a\in\ZZ$ and $i\geq0$. 
+\end{proposition}
+
+\subsection{Chevalley Groups over Arbitrary Fields}
+
+We are finally ready to define the adjoint Chevalley groups associated to a complex simple Lie algebra $\fg_\CC$ with Chevalley basis $\mathcal{B}$ over an arbitrary field $K$. 
+The idea is now simple: for each $\alpha\in\Phi$ and $t\in K$, we consider the matrix $\bar{A}_\alpha(t)$ obtained from $A_\alpha(\zeta)$ by replacing each entry $a\zeta^i$ with $\bar{a}t^i$ where $\bar{a}$ is the image of $a$ under the homomorphism $\ZZ\to K$. 
+Then, we define $\bar{x}_\alpha(t)$ to be the automorphism of $\fg_K$ with basis $\bar{A}_\alpha(t)$ with respect to the basis $\overline{\mathcal{B}}_K$. Whenever the field $K$ is clear from context, we simply write $h_i$, $e_\alpha$ and $x_\alpha(t)$ instead of $\bar{x}_\alpha(t)$, $\overline{h_i}$ and $\overline{e_\alpha}$, respectively. In addition, for each $\chi\in\Hom(\ZZ\Phi,K^*)$, we define the $K$-linear map
+\begin{align*}
+    h(\chi):\fg_K& \longrightarrow\fg_K\\
+    h_i & \longmapsto h_i\hspace{1.23cm} \text{for all } 1\leq i \leq l,\\
+    e_\alpha & \longmapsto \chi(\alpha) e_\alpha \quad\text{ for all } \alpha\in\Phi.
+\end{align*}
+It is easy to see that the maps $h(\chi)$ are all the automorphisms of $\fg_K$ as a Lie algebra that fix every root subspace.
+
+\begin{definition}\label{def:chevgroup}
+    The \textit{adjoint Chevalley group} over $K$ associated to $\fg_\CC$ is the subgroup $G$ of $\Aut(\fg_\CC)$ generated by the automorphisms $x_\alpha(t)$ for all $\alpha\in\Phi$ and $t\in\CC$ \textbf{AND} the automorphisms $h(\chi)$ for all $\chi\in\Hom(\ZZ\Phi, K^*)$.
+\end{definition}
+
+This definition of $G$ gives very little information about the group. To study its structure, we first consider the \textit{root subgroups} $X_\alpha=\{x_\alpha(t):t\in K\}\cong K$ for each $\alpha\in\Phi$ and the \textit{diagonal subgroup} (or \textit{torus}) $H=\{h(\chi):\chi\in\Hom(\ZZ\Phi,K^*)\}\cong (K^*)^l$. In addition, the following elementary lemma will be very important. 
+
+\begin{lemma}\label{lem:conjxalpla}
+    Let $\fg$ be a Lie algebra over $K$ and let $x\in\fg$ be $\ad$-nilpotent. Then, for all automorphisms $\phi$ of $\fg$, we have that 
+    $$\phi\circ\exp(\ad(x))\circ\phi^{-1}=\exp(\ad(\phi(x))).$$
+\end{lemma}
+
+\begin{cor}
+    The diagonal subgroup $H$ is abelian and normalizes each root subgroup $X_\alpha$. In particular, the subgroup $\langle X_\alpha:\alpha\in\Phi\rangle$ equals the commutator subgroup $G'$ of $G$.
+\end{cor}
+
+\subsection{Chevalley Groups of Type \texorpdfstring{$A_n$}{PDFstring}}
+
+In this section, we let $\fg_\CC=\mathrm{sl}_{n+1}(\CC)$ with root system $\Phi$ (of type $A_n$) and Chevalley basis $\mathcal{B}$ as in Section \ref{sec:chevbasis_sl}. Fix a field $K$ and consider $\fg_K\cong\mathrm{sl}_n(K)$ and we construct the group $G$ from Definition \ref{def:chevgroup}, also denoted as the \textit{adjoint Chevalley group of type $A_n$ over $K$}. In this section, we give a global description of $G$ and its commutator subgroup $G'$. This result is dependent on the following elementary lemma.
+
+\begin{lemma}\label{lem:identityexp}
+    Let $\fg\subseteq\mathrm{gl}_n(K)$ be a linear Lie algebra over $K$ and let $x\in\fg$ be nilpotent. Then 
+    $$\exp(\ad(x))(y)=\exp(x)\circ y\circ \exp(x)^{-1}$$
+    for all $y\in\fg$, where the composition is the standard multiplication of matrices in $\mathrm{gl}_n(K)$.
+\end{lemma}
+
+For any $\alpha\in\Phi$, we note that the basis element $e_\alpha\in\Phi$ satisfies $e_\alpha^2=0$ so $\exp(t e_\alpha)=I+t e_\alpha$ for all $t\in K$. In particular, the lemma above applies with $x=t e_\alpha$. Finally, since the group $\SL_{n+1}(K)$ is generated by the matrices $\{I+t e_\alpha:\alpha\in\Phi, t\in K\}$, we have the following result.
+
+\begin{proposition}
+    There exists a surjective group homomorphism 
+    $$\Psi':\SL_{n+1}(\CC)\longrightarrow\langle X_\alpha:\alpha\in\Phi\rangle=G'$$
+    such that $\Psi'(A)(y)=AyA^{-1}$ for all $A\in\SL_{n+1}(K)$ and $y\in\mathrm{sl}_{n+1}(K)$. Moreover, $\ker\Psi'=Z(\SL_{n+1}(K))$ consists of the scalar matrices of the identity inside $\SL_{n+1}(K)$. In particular, $G'\cong\PSL_{n+1}(K)$.
+\end{proposition}
