@@ -164,3 +164,38 @@ For any $\alpha\in\Phi$, we note that the basis element $e_\alpha\in\Phi$ satisf
     $$\Psi':\SL_{n+1}(\CC)\longrightarrow\langle X_\alpha:\alpha\in\Phi\rangle=G'$$
     such that $\Psi'(A)(y)=AyA^{-1}$ for all $A\in\SL_{n+1}(K)$ and $y\in\mathrm{sl}_{n+1}(K)$. Moreover, $\ker\Psi'=Z(\SL_{n+1}(K))$ consists of the scalar matrices of the identity inside $\SL_{n+1}(K)$. In particular, $G'\cong\PSL_{n+1}(K)$.
 \end{proposition}
+\begin{proof}
+    The existence of $\Psi'$ is immediate from our discussion above. The kernel of $\Psi'$ are matrices $A\in\SL_{n+1}(K)$ such that $Ay=yA$ for all $y\in\mathrm{sl}_{n+1}(K)$. These are precisely the scalar multiples of the identity, as desired.
+\end{proof}
+
+
+Of course, this motivates the natural question whether there is a similar global description for $G$ extending the one we already have for $G'$. This is indeed possible, as we now show.
+
+\begin{theorem}\label{thm:chevalley_an}
+    There exists a unique surjective homomorphism 
+    $$\Psi:\GL_{n+1}\longrightarrow G=\langle G',H\rangle$$
+    such that $\Psi$ agrees with $\Psi'$ on $G'$ and 
+    $$\Psi\left(\begin{pmatrix}
+        s &  & & \\
+         & 1 & & \\
+         & & \ddots & \\
+         & & & 1\\
+    \end{pmatrix}\right)=h(\chi_s),\quad\text{where }\chi_s(\alpha_1)=s \text{ and }\chi_s(\alpha_i)=1 \text{ for all }2\leq i\leq n.$$
+\end{theorem}
+\begin{proof}
+    To simplify notation, let $D_s=\begin{psmallmatrix}
+        s &  & & \\
+         & 1 & & \\
+         & & \ddots & \\
+         & & & 1\\
+    \end{psmallmatrix}$ and consider the subgroup $H_1=\{D_s:s\in K^*\}$. Since 
+    $\GL_{n+1}(K)=\SL_{n+1}(K)\rtimes H_1$, for any $A\in\GL_{n+1}$, there are unique $D_s\in H_1$ and $A'\in\SL_{n+1}$ such that $A=D_s A'$. Then we can define a map $\Psi$ on $\GL_{n+1}(K)$ as 
+    $$\Psi(A)=h(\chi_s)\Psi(A')\quad\text{where }\chi_s(\alpha_1)=s \text{ and }\chi_s(\alpha_i)=1 \text{ for all }2\leq i\leq n.$$
+    Of course, it remains to show the non-trivial fact that $\Psi$ is in fact a group homomorphism. Thus, we need to show that $\Psi$ is compatible with the semidirect product between $\SL_{n+1}(K)$ and $H_1$. More concretely, we need to show that 
+    \begin{equation}\tag{\ref{thm:chevalley_an}.1}\label{eq:semidirect}
+        \Psi'(A')h(\chi_s)=h(\chi_s)\Psi'(D_s^{-1}A'D_s)
+    \end{equation}
+    for all $A'\in\SL_{n+1}$ and $s\in K^*$. Since $\Psi'$ is a group homomorphism, it is enough to show the above condition for a set of generators of $\SL_{n+1}(K)$. Hence, it will be enough to show \eqref{eq:semidirect} for all $I+t e_\alpha\in\SL_{n+1(K)}$ where $\alpha\in\Phi$ and $t\in K$ and all $s\in K^*$. Moreover, $\Psi'(I+t e_\alpha)=x_\alpha(t)$ and hence \eqref{eq:semidirect} is equivalent to 
+    $$x_\alpha(t)=h(\chi_s)x_\alpha(\chi(s)^{-1}t)h(\chi_s)^{-1},$$
+    which is exactly the content of Lemma \ref{lem:conjxalpla}, and so the result follows. 
+\end{proof}
