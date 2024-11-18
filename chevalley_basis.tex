@@ -1,3 +1,5 @@
+\subsection{Introduction and Recap on Lie Algebras}
+
 The study of the structure of Lie algebras and their representation theory is a central tool in the representation theory of groups of Lie type. This is a consequence of the fact that the algebraic structure of the Lie algebra encapsulates to a large extent the interplay between the algebraic and topological properties of the group. To understand how one side helps understand the other, it is essential to give explicit methods that allows us to construct groups of Lie type from a Lie algebra and vice-versa. The construction of complex (or real) Lie groups from a complex (or real) Lie algebra has been known for a long time, and it has sparked remarkable progress in the understanding of the representations of complex (or real) Lie groups. 
 
 In the 1950s, Chevalley became interested in the connection between complex Lie algebras and finite groups, an unexplored link at the time. In a fundamental paper, Chevalley constructed, for each complex simple Lie algebra $\fg$, a corresponding linear group over any field $K$. In this chapter, we investigate the main ingredient of his construction; the existence of a Chevalley basis. By using the adjoint representation $\ad:\fg\to\mathrm{gl}(\fg)$ together with the exponential map, we will be able to construct adjoint groups of Lie type over an arbitrary field $K$. 
@@ -18,7 +20,7 @@ We remark that $h_\alpha$ is uniquely determined, while $e_\alpha$ and $e_{-\alp
     The Killing form gives $\mathfrak{t}$ the structure of an euclidean space and induces isometries $\phi:\mathfrak{t}\to\mathfrak{t}^*$ and $\phi^*:\mathfrak{t}^*\to\mathfrak{t}^{**}$. Note that for any $\alpha\in\Phi$, $\phi(t_\alpha)=\alpha$ where $K(t_\alpha,x)=\alpha(x)$ for all $x\in\mathfrak{t}$. Since $h_\alpha=2t_\alpha/\alpha(t_\alpha)$, then $\phi(h_\alpha)=2\alpha/(\alpha,\alpha)$, where $(\cdot,\cdot)$ is the inner product on $\mathfrak{t}^*$ induced by the Killing form. This implies that $\phi^*\phi(h_\alpha)=\calpha$. Hence, the statement of the lemma is equivalent to the fact that $\cPhi=\{\cbeta:\beta\in\Phi\}$ is a root system in $\mathfrak{t}^{**}$ with integral basis $\check{\Delta}=\{\check{\alpha_i}:1\leq i\leq l\}$, which is true. Hence, the result follows.
 \end{proof}
 
-To simplify notation, we write $h_i$ instead of $h_{\alpha_i}$ for each $1\leq i\leq l$. The lemma implies that the set $\mathcal{B}=\{h_1,\ldots,h_l;e_\alpha:\alpha\in\Phi\}$ is a basis for $\fg_\CC$. In addition, since $[\fg_\alpha,\fg_\beta]=\fg_{\alpha+\beta}$ for all $\alpha,\beta\in\Phi$, we have that 
+To simplify notation, we write $h_i$ instead of $h_{\alpha_i}$ for each $1\leq i\leq l$. The lemma implies that the set $\mathcal{B}=\{e_\alpha,\alpha\in\Phi;\ h_i,1\leq i\leq l\}$ is a basis for $\fg_\CC$. In addition, since $[\fg_\alpha,\fg_\beta]=\fg_{\alpha+\beta}$ for all $\alpha,\beta\in\Phi$, we have that 
 $$[h_i,h_j]=0,\quad[h_i,e_\alpha]=\alpha(h_i)e_\alpha=\langle\alpha,\check{\alpha_i}\rangle e_\alpha,\quad[e_\alpha,e_\beta]=\begin{cases}
     N_{\alpha,\beta}e_{\alpha+\beta} & \text{ if } \alpha+\beta\in\Phi,\\
     0 & \text{ if }\alpha+\beta\notin\Phi.\\
@@ -26,18 +28,29 @@ $$[h_i,h_j]=0,\quad[h_i,e_\alpha]=\alpha(h_i)e_\alpha=\langle\alpha,\check{\alph
 The constants $N_{\alpha,\beta}$ are called the \textit{structure constants} associated to $\mathcal{B}$.
 
 \begin{definition}
-    A basis $\mathcal{B}=\{h_1,\ldots,h_l;e_\alpha:\alpha\in\Phi\}$ as above is said to be a \textit{Chevalley basis} if the structure constants $N_{\alpha,\beta}$ are integers for all $\alpha,\beta\in\Phi$ with $\alpha+\beta\in\Phi$.
+    A basis $\mathcal{B}=\{e_\alpha,\alpha\in\Phi;\ h_i,1\leq i\leq l\}$ with $[e_{\alpha},e_{-\alpha}]=h_\alpha$ for all $\alpha\in\Phi$ is said to be a \textit{Chevalley basis} if the structure constants satisfy $N_{\alpha,\beta}=-N_{-\alpha,-\beta}$ for all $\alpha,\beta\in\Phi$ with $\alpha+\beta\in\Phi$.
 \end{definition}
 
-The main theorem of this chapter the following.
+The central aim of this chapter is to prove that any simple Lie algebra has a Chevalley basis, and that its structure constants are integral. First, however, we give an explicit example of Chevalley basis for the Lie algebras $\mathrm{sl}_{n+1}(\CC)$ (of type $A_n$).
 
-\begin{theorem}[Chevalley, 1955]
-    Let $\fg_\CC$ be a complex simple Lie algebra. Then $\fg_\CC$ has a Chevalley basis.
-\end{theorem}
+\iffalse\begin{theorem}[Chevalley, 1955]
+    Let $\fg_\CC$ be a complex simple Lie algebra. Then $\fg_\CC$ has a Chevalley basis. Moreover, the structure constants of any Chevalley basis are integral.
+\end{theorem}\fi
+
+
+
+
+
+
+
+
+
+
+
 
 \subsection{Chevalley Basis on \texorpdfstring{$\mathrm{sl}_{n+1}(\CC)$}{PDFstring}}\label{sec:chevbasis_sl}
 
-Let's begin with a motivating example in which Chevalley basis arise naturally. The Lie algebra $\fg_\CC=\mathrm{sl}_{n+1}(\CC)$ has a Cartan subalgebra $\mathfrak{t}$ consisting of the diagonal matrices, which is spanned by $E_{ii}-E_{i+1,i+1}$ for $1\leq i\leq n$. To simplify notation, we let $h_i=E_{ii}-E_{i+1,i+1}$ (note that this coincides with the notation above - and it is not a coincidence!).
+Let's begin with a motivating example in which Chevalley basis arise naturally. The Lie algebra $\fg_\CC=\mathrm{sl}_{n+1}(\CC)$ has a Cartan subalgebra $\mathfrak{t}$ consisting of the diagonal matrices, which is spanned by $E_{ii}-E_{i+1,i+1}$ for $1\leq i\leq n$. %To simplify notation, we let $h_i=E_{ii}-E_{i+1,i+1}$ (note that this coincides with the notation above - and it is not a coincidence!).
 
 The root space decomposition of $\mathrm{sl}_{n+1}(\CC)$ with this choice of Cartan subalgebra is 
 $$\mathrm{sl}_{n+1}(\CC)=\mathfrak{t}\oplus\sum_{1\leq i\neq j\leq n+1}\langle E_{ij}\rangle,$$
@@ -56,18 +69,67 @@ $$\alpha_i(h_j)=\begin{cases}
 \end{proof}
 
 \begin{proposition}
-    The basis $\{h_1,\ldots,h_n;E_{ij}:1\leq i\neq j\leq n+1\}$ is a Chevalley basis of $\mathrm{sl}_{n+1}(\CC)$.
+    The set $\{E_{ij}, 1\leq i\neq j\leq n+1;\ E_{ii}-E_{i+1,i+1}, 1\leq i\leq n\}$ is a Chevalley basis of $\mathrm{sl}_{n+1}(\CC)$.
 \end{proposition}
 \begin{proof}
-    Since $\alpha_1,\ldots,\alpha_n$ is an integral basis, the matrices $h_i=E_{ii}-E_{i+1,i+1}$ are the desired basis of $\mathfrak{t}$. Since $[E_{ij},E_{kl}]=\delta_{jk}E_{il}-\delta_{il}E_{kj}$, it is clear that all structure constants are $\pm1$, as desired.
+    Recall that $\alpha_1,\ldots,\alpha_n$ is an integral basis, where $\mathrm{sl}_{n+1}(\CC)_{\alpha_i}=\langle E_{i,i+1}\rangle$. Hence, the matrices $E_{ii}-E_{i+1,i+1}=[E_{i,i+1},E_{i+1,i}]$ are the desired basis for the Cartan subalgebra $\mathfrak{t}$. Consider now two roots $\alpha,\beta\in\Phi$ and let $E_{ij}=e_\alpha\in\fg_\alpha$ and $E_{kl}=e_\beta\in\fg_\beta$. Note that $\alpha+\beta\in\Phi$ if and only if $j=k$ and $l\neq i$ or $l=i$ and $k\neq j$. Without loss of generality, we may assume the latter and therefore
+    $$[e_\alpha,e_\beta]=[E_{ij},E_{ki}]=-E_{kj}=-e_{\alpha+\beta}\quad\text{and}\quad[e_{-\alpha},e_{-\beta}]=[E_{ji},E_{ik}]=E_{jk}=e_{-\alpha-\beta}.$$
+    This calculation shows that $N_{\alpha,\beta}=-N_{-\alpha,-\beta}\in\{\pm1\}$, so $\{E_{ij}, 1\leq i\neq j\leq n+1;\ E_{ii}-E_{i+1,i+1}, 1\leq i\leq n\}$ is a Chevalley basis of $\mathrm{sl}_{n+1}(\CC)$.
 \end{proof}
 
 \subsection{Existence of Chevalley Basis}
+Let $\fg_\CC$ be a complex simple Lie algebra with with root system $\Phi$ and integral basis $\Delta=\{\alpha_1,\ldots,\alpha_l\}$. As in the previous discussion, we let $h_i=h_{\alpha_i}$. Chevalley's groundbreaking result (Corollary \ref{cor:chevalleybasis}  Theorem \ref{thm:chevalleybasis}) was the fact that any complex Lie algebra has a Chevalley basis and that its structure constants are always integral. 
+
+Firstly, we prove that $\fg_\CC$ has a Chevalley basis. This is a consequence of the following result.
+
+\begin{proposition}
+    For each $1\leq i\leq l$, fix some $e_{\alpha_i}\in\fg_{\alpha_i}$ and let $e_{-\alpha_i}\in\fg_{-\alpha_i}$ be the unique element such that $[e_{\alpha_i},e_{-\alpha_i}]=h_i$. Then there exists an automorphism $\sigma$ of $\fg_\CC$, of order $2$, satisfying $\sigma(e_{\alpha_i})=-e_{-\alpha_i}$, $\sigma(e_{-\alpha_i})=-e_{\alpha_i}$ and $\sigma(h)=-h$ for all $h\in\mathfrak{t}$.
+\end{proposition}
+
+We state the first result without proof, since it depends on a lenghty calculation can be easily found in many references.
+
+\begin{cor}[Chevalley, 1955]\label{cor:chevalleybasis}
+    The Lie algebra $\fg_\CC$ has a Chevalley basis.
+\end{cor}
+\begin{proof}
+    Consider the automorphism $\sigma$ of order $2$ from the previous proposition and let $\alpha$ be a positive root. Fix some $e_\alpha\in\fg_\alpha$ and let $e_{-\alpha}=-\sigma(e_\alpha)$. By rescaling $e_\alpha$ if necessary, we may assume that $[e_\alpha,e_{-\alpha}]=h_\alpha$ (here we are using that $\CC$ contains all of its square roots). With this choice for every positive root, we note that 
+    $$N_{-\alpha,-\beta}e_{-\alpha-\beta}=[e_{-\alpha},e_{-\beta}]=[-\sigma(e_\alpha),-\sigma(e_\beta)]=\sigma([e_\alpha,e_\beta])=\sigma(N_{\alpha,\beta}e_{\alpha+\beta})=N_{\alpha,\beta}e_{-\alpha-\beta}.$$
+    Hence, $N_{\alpha,\beta}=-N_{-\alpha,-\beta}$, so $\{h_1,\ldots,h_l;e_\alpha:\alpha\in\Phi\}$ is a Chevalley basis.
+\end{proof}
+
+Once the existence of Chevalley basis has been settled, we now show that the structure constants are integral. This is a consequence of the following result, for which we omit the proof as it is lenghty but unenlightening. 
+
+\begin{theorem}[Properties of Structure Constants]
+    Let $\{h_1,\ldots,h_l;e_\alpha:\alpha\in\Phi\}$ be a basis of $\fg_\CC$ with $h_i=h_{\alpha_i}(1\leq i\leq l)$ and $e_\alpha\in\fg_\alpha$ satisfying $[e_\alpha,e_{-\alpha}]=h_\alpha$ for all $\alpha\in\Phi$. Then the structure constants $N_{\alpha,\beta}$ satisfy the following properties:
+    \begin{enumerate}
+        \item For all $\alpha,\beta\in\Phi$, $N_{\alpha,\beta}=-N_{\beta,\alpha}$.
+        \item For all $\alpha,\beta,\gamma\in\Phi$ with $\alpha+\beta+\gamma=0$ we have that 
+        $$\frac{N_{\alpha,\beta}}{(\gamma,\gamma)}=\frac{N_{\beta,\gamma}}{(\alpha,\alpha)}=\frac{N_{\gamma,\alpha}}{(\beta,\beta)}.$$
+        \item Suppose that $\alpha,\beta\in\Phi$ are independent roots and that $\beta-p\alpha,\ldots,\beta,\ldots,\beta+q\alpha$ is the $\alpha$ string through $\beta$. If $q\geq1$, then 
+        $$N_{\alpha,\beta}N_{-\alpha,-\beta}=-(p+1)^2.$$
+    \end{enumerate}
+\end{theorem}
+
+We are now ready to state the main theorem Chevalley proved.
+
+\begin{theorem}[Chevalley, 1995]\label{thm:chevalleybasis}
+    Let $\{e_\alpha,\alpha\in\Phi;\ h_i,1,\leq i\leq l\}$ be a Chevalley basis of $\fg_\CC$. Then the resulting constants lie in $\ZZ$. More precisely,
+    \begin{itemize}
+        \item $[h_ih_j]=0$ for $1\leq i,j\leq l$.
+        \item $[h_ix_\alpha]=\langle\alpha,\check{\alpha_i}\rangle e_\alpha$ for $1\leq i\leq l$, $\alpha\in\Phi$.
+        \item $[e_\alpha,e_{-\alpha}]=h_\alpha$ is a $\ZZ$ linear combination of $h_1,\ldots,h_l$.
+        \item If $\alpha,\beta$ are independent roots and $\beta-p\alpha,\ldots,\beta,\ldots,\beta+q\alpha$ the $\alpha$-string through $\beta$, then $[e_\alpha,e_\beta]=0$ if $q=0$ while $[e_\alpha,e_\beta]=\pm(p+1)e_{\alpha+\beta}$ if $q\geq 1$.
+    \end{itemize} 
+\end{theorem}
+
+
+
+
 
 \subsection{The Exponential Map}
 Having established the existence of Chevalley basis, we can now define the exponential maps arising form the adjoint representation of the Lie algebra and study its effect on the basis. 
 
-For the remainder of this chapter, fix some complex simple Lie algebra $\fg_\CC$ with Cartan subalgebra $\mathfrak{t}$, root system $\Phi$ and Chevalley basis $\mathcal{B}$. Consider the adjoint representation $\ad:\fg\to\mathrm{gl}(\fg)$ and, for every $\alpha\in\Phi$ and $\zeta\in\CC$, we define the endomorphism of $\fg_\CC$ given by
+For the remainder of this chapter, fix some complex simple Lie algebra $\fg_\CC$ with Cartan subalgebra $\mathfrak{t}$, root system $\Phi$ with integral basis $\Delta$ and Chevalley basis $\mathcal{B}$. Consider the adjoint representation $\ad:\fg\to\mathrm{gl}(\fg)$ and, for every $\alpha\in\Phi$ and $\zeta\in\CC$, we define the endomorphism of $\fg_\CC$ given by
 $$\exp(\ad(\zeta e_\alpha)):=I+\ad(\zeta e_\alpha)+\frac{\ad(\zeta e_\alpha)^2}{2}+\frac{\ad(\zeta e_\alpha)^3}{6}+\cdots+\frac{\ad(\zeta e_\alpha)^k}{k!}+\cdots.$$
 This is a well-defined map since $\ad(\zeta e_\alpha)$ is a nilpotent transformation for all $\alpha\in\Phi$ and $\zeta\in\CC$. For $\exp(\ad(\zeta e_\alpha))$ to be of interest, we need to show that it is in fact a Lie algebra automorphism of $\fg_\CC$. To do this, we first note that for any $x\in\fg_\CC$, the Jacobi identity implies that
 $$\ad(x)([yz])=[\ad(x)(y),z]+[y,\ad(x)(z)]$$
@@ -109,9 +171,9 @@ The group $G$ naturally inherits a complex Lie group structure as a subgroup of 
 $$\fg_\ZZ=\sum_{i=1}^l\ZZ h_i\oplus\sum_{\alpha\in\Phi}\ZZ e_\alpha,$$
 which is closed under the bracket. Then we can construct the $K$-vector space $\fg_K=K\otimes_\ZZ\fg_\ZZ$, a Lie algebra over $K$ with basis $\overline{h_i}:=1\otimes h_i$ for $1\leq i\leq n$ and $\overline{e_\alpha}=1\otimes e_\alpha$ for $\alpha\in\Phi$. We denote this basis as $\overline{\mathcal{B}}_K$. Ideally, we would like to construct the Chevalley group over $K$ as a subgroup of $\Aut(\fg_K)$ generated by exponential maps (and possibly other automorphisms). This is indeed possible if $K$ has characteristic $0$; however, if the characteristic is positive, the exponential maps are not well-defined automorphisms of $\fg$. To circumvent this problem, we first need to analyse how the exponential maps $x_\alpha(\zeta)$ act on the Chevalley basis $\mathcal{B}$. This is simply a matter of tracing through the definitions. Indeed, 
 \begin{align*}
-    x_\alpha(\zeta)(e_\alpha)=e_\alpha, \quad\quad x_\alpha(e_{-\alpha})=e_{-\alpha}+\zeta h_\alpha-\zeta^2 e_\alpha\quad\quad\text{and}\quad\quad x_\alpha(\zeta)(h_i)=h_i-\langle\alpha,\check{\alpha_i}\rangle e_\alpha
+    x_\alpha(\zeta)(e_\alpha)=e_\alpha, \quad\quad x_\alpha(\zeta)(e_{-\alpha})=e_{-\alpha}+\zeta h_\alpha-\zeta^2 e_\alpha\quad\quad\text{and}\quad\quad x_\alpha(\zeta)(h_i)=h_i-\langle\alpha,\check{\alpha_i}\rangle e_\alpha
 \end{align*}
-for all $1\leq i\leq l$. It remains to show the effect of $x_\alpha(\zeta)$ on basis elements $e_\beta$ for $\beta\neq\pm\alpha$. To do this, suppose that $\beta-p\alpha,\ldots,\beta,\ldots,\beta+q\alpha$ is the $\alpha$-string through $\beta$, where $p\geq 0$ and $q\geq 1$ (if $q=0$, then $\alpha+\beta\notin\Phi$, so $x_\alpha(\zeta)(e_\beta)=e_\beta$). Then
+for all $1\leq i\leq l$. It remains to show the effect of $x_\alpha(\zeta)$ on basis elements $e_\beta$ for $\beta\neq\pm\alpha$. To do this, suppose that $\beta-p\alpha,\ldots,\beta,\ldots,\beta+q\alpha$ is the $\alpha$-string through $\beta$, where $p,q\geq 0$. Then
 $$x_\alpha(\zeta)(e_\beta)=e_\beta+N_{\alpha,\beta}\zeta e_{\beta+\alpha}+\frac{N_{\alpha,\beta}N_{\alpha,\alpha+\beta}}{2}\zeta^2 e_{\beta+2\alpha}+\cdots+\frac{N_{\alpha,\beta}\cdots N_{\alpha,\beta+(q-1)\alpha}}{q!}\zeta^q e_{\beta+q\alpha}.$$
 From Theorem \ref{thm:chevalleybasis}, we know that $N_{\alpha,\beta}=\pm(p+1)$ and therefore
 $$\frac{N_{\alpha,\beta}\cdots N_{\alpha,\beta+(i-1)\alpha}}{i!}=\pm\frac{(p+1)(p+2)\cdots(p+i)}{i!}=\pm \binom{p+i}{i}.$$
@@ -124,7 +186,7 @@ Hence, we have shown the following.
 
 We are finally ready to define the adjoint Chevalley groups associated to a complex simple Lie algebra $\fg_\CC$ with Chevalley basis $\mathcal{B}$ over an arbitrary field $K$. 
 The idea is now simple: for each $\alpha\in\Phi$ and $t\in K$, we consider the matrix $\bar{A}_\alpha(t)$ obtained from $A_\alpha(\zeta)$ by replacing each entry $a\zeta^i$ with $\bar{a}t^i$ where $\bar{a}$ is the image of $a$ under the homomorphism $\ZZ\to K$. 
-Then, we define $\bar{x}_\alpha(t)$ to be the automorphism of $\fg_K$ with basis $\bar{A}_\alpha(t)$ with respect to the basis $\overline{\mathcal{B}}_K$. Whenever the field $K$ is clear from context, we simply write $h_i$, $e_\alpha$ and $x_\alpha(t)$ instead of $\bar{x}_\alpha(t)$, $\overline{h_i}$ and $\overline{e_\alpha}$, respectively. In addition, for each $\chi\in\Hom(\ZZ\Phi,K^*)$, we define the $K$-linear map
+Then, we define $\bar{x}_\alpha(t)$ to be the automorphism of $\fg_K$ with matrix $\bar{A}_\alpha(t)$ with respect to the basis $\overline{\mathcal{B}}_K$. Whenever the field $K$ is clear from context, we simply write $h_i$, $e_\alpha$ and $x_\alpha(t)$ instead of $\bar{x}_\alpha(t)$, $\overline{h_i}$ and $\overline{e_\alpha}$, respectively. In addition, for each $\chi\in\Hom(\ZZ\Phi,K^*)$, we define the $K$-linear map
 \begin{align*}
     h(\chi):\fg_K& \longrightarrow\fg_K\\
     h_i & \longmapsto h_i\hspace{1.23cm} \text{for all } 1\leq i \leq l,\\
@@ -195,7 +257,15 @@ Of course, this motivates the natural question whether there is a similar global
     \begin{equation}\tag{\ref{thm:chevalley_an}.1}\label{eq:semidirect}
         \Psi'(A')h(\chi_s)=h(\chi_s)\Psi'(D_s^{-1}A'D_s)
     \end{equation}
-    for all $A'\in\SL_{n+1}$ and $s\in K^*$. Since $\Psi'$ is a group homomorphism, it is enough to show the above condition for a set of generators of $\SL_{n+1}(K)$. Hence, it will be enough to show \eqref{eq:semidirect} for all $I+t e_\alpha\in\SL_{n+1(K)}$ where $\alpha\in\Phi$ and $t\in K$ and all $s\in K^*$. Moreover, $\Psi'(I+t e_\alpha)=x_\alpha(t)$ and hence \eqref{eq:semidirect} is equivalent to 
-    $$x_\alpha(t)=h(\chi_s)x_\alpha(\chi(s)^{-1}t)h(\chi_s)^{-1},$$
+    for all $A'\in\SL_{n+1}(K)$ and $s\in K^*$. Since $\Psi'$ is a group homomorphism, it is enough to show the above condition for a set of generators of $\SL_{n+1}(K)$. Hence, it will be enough to show \eqref{eq:semidirect} for all $I+t e_\alpha\in\SL_{n+1}(K)$ where $\alpha\in\Phi$ and $t\in K$ and all $s\in K^*$. Firstly, we note that 
+    $$D_s^{-1}(I+t e_\alpha)D_s=\begin{cases}
+        I+s^{-1}t e_\alpha & \text{ if }\alpha=\alpha_1+\cdots+\alpha_j \text{ for some $1\leq j\leq n$,}\\
+        I+st e_\alpha & \text{ if }\alpha=-\alpha_1-\cdots-\alpha_j \text{ for some $1\leq j\leq n$,}\\
+        I+te_\alpha & \text{ otherwise}.
+    \end{cases}$$
+    Since $\chi_s$ is a character of $\ZZ\Phi$ defined by $\chi_s(\alpha_1)=s$ and $\chi_s(\alpha_i)=1$ for all $2\leq i\leq n$, it follows that
+    $$D_s^{-1}(I+te_\alpha)D_s=I+\chi_s(\alpha)^{-1}te_\alpha$$
+    for all $\alpha\in\Phi$. Finally, since $\Psi'(I+t e_\alpha)=x_\alpha(t)$, the equation \eqref{eq:semidirect} is equivalent to 
+    $$x_\alpha(t)=h(\chi_s)x_\alpha(\chi_s(\alpha)^{-1}t)h(\chi_s)^{-1},$$
     which is exactly the content of Lemma \ref{lem:conjxalpla}, and so the result follows. 
 \end{proof}

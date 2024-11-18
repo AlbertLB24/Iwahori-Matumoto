@@ -135,14 +135,14 @@
 	\maketitle
 	\pagenumbering{arabic}
 	
-    \section{The Weyl Group}\label{chp:weylgroup}
+    \iffalse\section{The Weyl Group}\label{chp:weylgroup}
     \input{weyl_group.tex}
 
-    \newpage
-    \section{Existence of Chevalley Basis}
+    \fi\newpage
+    \section{Chevalley Basis and Construction of Chevalley Groups}
     \input{chevalley_basis.tex}
 
-    \newpage
+    \iffalse\newpage
     \section{Chevalley Groups: First Examples}
     \input{examples.tex}
 
@@ -160,6 +160,6 @@
 
     \newpage
     \section{The Affine Weyl Group}
-    \input{affine_weyl.tex}
+    \input{affine_weyl.tex}\fi
 
 \end{document}
